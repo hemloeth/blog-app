@@ -42,7 +42,7 @@ export default async function HomePage() {
 
 // Optional: Add metadata for SEO
 export const metadata = {
-  title: "My Blog - Sharing Ideas &amp; Insights",
+  title: "My Blog - Sharing Ideas and Insights",
   description: "A place where I document my journey, share knowledge, and connect with fellow developers and thinkers.",
   keywords: ["blog", "development", "programming", "web development", "react", "nextjs"],
 }
