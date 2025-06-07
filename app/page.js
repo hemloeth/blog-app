@@ -2,9 +2,9 @@
 import { getNeonClient } from "@/lib/db"
 import Navbar from "../components/ui/navbar"
 import HeroSection from "../components/ui/herosection"
-import AboutSection from "../app/about/page"
+import AboutSection from "./about/page"
 import BlogListPage from "./blogs/page"
-import ContactSection from "../app/contact/page"
+import ContactSection from "./contact/page"
 import Footer from "../components/ui/footer"
 
 async function getPosts() {
@@ -42,7 +42,7 @@ export default async function HomePage() {
 
 // Optional: Add metadata for SEO
 export const metadata = {
-  title: "My Blog - Sharing Ideas & Insights",
+  title: "My Blog - Sharing Ideas &amp; Insights",
   description: "A place where I document my journey, share knowledge, and connect with fellow developers and thinkers.",
   keywords: ["blog", "development", "programming", "web development", "react", "nextjs"],
 }
