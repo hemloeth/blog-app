@@ -5,10 +5,12 @@ import { PenTool } from "lucide-react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 
-// Replace this with your actual data fetching function
 async function getPosts() {
-  // example: fetch('/api/posts').then(res => res.json())
-  return []
+  // Dummy fetch example
+  return [
+    { id: 1, title: "First post" },
+    { id: 2, title: "Second post" }
+  ]
 }
 
 export default function HomePage() {
@@ -24,32 +26,42 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Navbar */}
-      <nav className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50">
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-2">
-              <PenTool className="h-6 w-6" />
-              <span className="text-xl font-bold">My Blog</span>
-            </div>
-            <div className="hidden md:flex items-center space-x-6">
-              <a href="#about" className="text-sm font-medium hover:text-primary transition-colors">
-                About
-              </a>
-              <a href="#blog" className="text-sm font-medium hover:text-primary transition-colors">
-                Blog
-              </a>
-              <a href="#contact" className="text-sm font-medium hover:text-primary transition-colors">
-                Contact
-              </a>
-              <Link href="/create-post">
-                <Button size="sm">Create Post</Button>
-              </Link>
-            </div>
+      <nav className="border-b bg-background/95 backdrop-blur sticky top-0 z-50">
+        <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+          <div className="flex items-center space-x-2">
+            <PenTool className="h-6 w-6" />
+            <span className="text-xl font-bold">My Blog</span>
+          </div>
+          <div className="hidden md:flex items-center space-x-6">
+            <a href="#about" className="text-sm font-medium hover:text-primary transition-colors">
+              About
+            </a>
+            <a href="#blog" className="text-sm font-medium hover:text-primary transition-colors">
+              Blog
+            </a>
+            <a href="#contact" className="text-sm font-medium hover:text-primary transition-colors">
+              Contact
+            </a>
+            <Link href="/create-post">
+              <Button size="sm">Create Post</Button>
+            </Link>
           </div>
         </div>
       </nav>
-      {/* You can render posts here if needed */}
+
+      {/* Render posts */}
+      <div className="container mx-auto p-4">
+        {posts.length === 0 && <p>No posts found.</p>}
+        {posts.length > 0 && (
+          <ul>
+            {posts.map(post => (
+              <li key={post.id} className="border-b py-2">
+                {post.title}
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
     </div>
   )
 }
