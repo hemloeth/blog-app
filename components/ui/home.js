@@ -1,7 +1,26 @@
 "use client"
 
-export default async function HomePage() {
-  const posts = await getPosts()
+import { useEffect, useState } from "react"
+import { PenTool } from "lucide-react"
+import Link from "next/link"
+import { Button } from "@/components/ui/button"
+
+// Replace this with your actual data fetching function
+async function getPosts() {
+  // example: fetch('/api/posts').then(res => res.json())
+  return []
+}
+
+export default function HomePage() {
+  const [posts, setPosts] = useState([])
+
+  useEffect(() => {
+    async function fetchPosts() {
+      const data = await getPosts()
+      setPosts(data)
+    }
+    fetchPosts()
+  }, [])
 
   return (
     <div className="min-h-screen bg-background">
@@ -30,5 +49,7 @@ export default async function HomePage() {
           </div>
         </div>
       </nav>
-</div>
-  )}
+      {/* You can render posts here if needed */}
+    </div>
+  )
+}
